@@ -16,9 +16,9 @@ class User(Base):
     last_name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
 
-    comment = relationship('Comment', backref='User')
-    post = relationship('Post', backref='User')
-    follower = relationship('Follower', backref='User')
+    comment = relationship('Comment', backref='user')
+    post = relationship('Post', backref='user')
+    follower = relationship('Follower', backref='user')
 
 class Comment(Base):
     __tablename__ = 'comment'
@@ -35,8 +35,8 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
 
-    media = relationship('Media', backref='Post')
-    comment = relationship('Comment', backref='Post')
+    media = relationship('Media', backref='post')
+    comment = relationship('Comment', backref='post')
 
 
 class Media(Base):
